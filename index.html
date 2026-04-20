@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RE to NFA to DFA Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Mermaid.js for Diagrams -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <h1>Automata Simulator</h1>
+            <p>Convert Regular Expressions to NFA and DFA</p>
+        </header>
+
+        <section class="input-section">
+            <div class="input-wrapper">
+                <input type="text" id="regexInput" placeholder="Enter a regular expression (e.g., (a|b)*abb)" autocomplete="off">
+                <button id="simulateBtn">Simulate</button>
+            </div>
+            <div class="helper-text">
+                Supported operators: <code>*</code> (star), <code>|</code> (union), <code>.</code> (concat), <code>()</code> (group)
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="resultsSection">
+            <div class="test-string-section">
+                <h3>Test a String</h3>
+                <div class="input-wrapper">
+                    <input type="text" id="testInput" placeholder="Enter string to test (e.g., ababb)" autocomplete="off">
+                    <button id="testBtn">Test</button>
+                </div>
+                <div id="testResult" class="test-result"></div>
+            </div>
+
+            <div class="tab-container">
+                <button class="tab-btn active" data-target="nfaView">NFA Diagram</button>
+                <button class="tab-btn" data-target="dfaView">DFA Diagram</button>
+                <button class="tab-btn" data-target="minDfaView">Minimized DFA</button>
+                <button class="tab-btn" data-target="detailsView">Formal Details</button>
+            </div>
+
+            <div class="tab-content active" id="nfaView">
+                <div class="diagram-container" id="nfaDiagram">
+                    <!-- Mermaid diagram will be injected here -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="dfaView">
+                <div class="diagram-container" id="dfaDiagram">
+                    <!-- Mermaid diagram will be injected here -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="minDfaView">
+                <div class="diagram-container" id="minDfaDiagram">
+                    <!-- Mermaid diagram will be injected here -->
+                </div>
+            </div>
+
+            <div class="tab-content" id="detailsView">
+                <div class="details-grid">
+                    <div class="details-card">
+                        <h3>Postfix Expression</h3>
+                        <div class="code-block" id="postfixResult"></div>
+                    </div>
+                    <!-- Future addition: Transition tables -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
